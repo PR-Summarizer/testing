@@ -1,0 +1,18 @@
+name: "Gemini PR Review"
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  gemini-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Gemini PR Review Action
+        uses: aryannaithani/ai-pr-gemini-review@v1
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
